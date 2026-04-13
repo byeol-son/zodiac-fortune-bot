@@ -1,0 +1,28 @@
+# 환경 변수
+.env
+.env.local
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Output (테스트용만 제외, 운영 시 필요하면 추가)
+output/
