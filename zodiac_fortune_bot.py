@@ -28,7 +28,7 @@ class ZodiacFortuneBot:
         
         # 3. 가독성 개선 (띠별 줄바꿈 추가)
         body = re.sub(r'(〈.+?띠〉)', r'\n\1', body)
-        body = re.sub(r'(운세지수 .+?\n)', r'\1\n', body)
+        body = re.sub(r'\n(운세지수 .+?\n)', r'\n\1\n', body)
         body = re.sub(r'\n{3,}', '\n\n', body).strip()
         
         # 4. 최종 메시지 구성
