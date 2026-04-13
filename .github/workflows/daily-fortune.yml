@@ -33,6 +33,9 @@ jobs:
         run: |
           python zodiac_fortune_bot.py
 
+      - name: Create output directory if not exists
+        run: mkdir -p output
+
       - name: Upload output
         if: always()
         uses: actions/upload-artifact@v4
