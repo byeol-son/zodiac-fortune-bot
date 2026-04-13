@@ -25,12 +25,26 @@ class ZodiacFortuneBot:
 
         # 2. 저작권 문구 삭제 및 공백 정리
         body = body.replace("*해당 내용의 저작권은 지윤철학원에 있습니다", "")
-        
-        # 3. 가독성 개선 (띠별 줄바꿈 추가)
-        body = re.sub(r'(〈.+?띠〉)', r'\n\1', body)
-        body = re.sub(r'\n(운세지수 .+?\n)', r'\n\1\n', body)
+
+        # 3. 가독성 개선 (운세지수를 각 띠의 맨 아래로 이동)
+        sections = re.split(r'(?=〈.+?띠〉)', body)
+        result = []
+
+        for section in sections:
+            if section.strip():
+                # 운세지수 추출
+                match = re.search(r'(운세지수 [^\n]+)', section)
+                if match:
+                    fortune_idx = match.group(1)
+                    # 운세지수 제거 후 내용
+                    content = re.sub(r'운세지수 [^\n]+\n', '', section).strip()
+                    result.append(f"{content}\n\n{fortune_idx}")
+                else:
+                    result.append(section.strip())
+
+        body = "\n\n".join(result)
         body = re.sub(r'\n{3,}', '\n\n', body).strip()
-        
+
         # 4. 최종 메시지 구성
         message = f"📢 {title}\n\n{body}"
         return message
