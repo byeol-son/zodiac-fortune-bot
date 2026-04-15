@@ -2,8 +2,8 @@ name: Daily Zodiac Fortune
 
 on:
   schedule:
-    # 매일 21:00 UTC (한국시간 06:00+1day) 실행
-    - cron: '0 21 * * *'
+    # 매일 20:00 UTC (한국시간 05:00+1day) 실행
+    - cron: '0 20 * * *'
 
   # 수동 테스트용 (Actions 탭에서 실행 가능)
   workflow_dispatch:
